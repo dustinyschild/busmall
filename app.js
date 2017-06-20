@@ -65,7 +65,7 @@ function checkAllProductsNew(allProductsNew) {
   }
 };
 
-runSurvey();
+//runSurvey();
 //create a function to use the DOM to display images
 //how should the DOM clear the previous cycle?
 
