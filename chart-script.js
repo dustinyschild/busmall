@@ -9,9 +9,9 @@ var productVotes = productList.map(function(productList){
 });
 
 var chartLocation = document.getElementById('bar-chart').getContext('2d');
-
+console.log(chartLocation);
 var myChart = new Chart(chartLocation, {
-  type: 'bar',
+  type: 'horizontalBar',
   data: {
     labels: productNames,
     datasets: [
@@ -27,7 +27,7 @@ var myChart = new Chart(chartLocation, {
           'rgba(51, 0, 68, 0.4)',
           'rgba(0, 0, 0, 0.4)'
         ]
-      },
+      }, //productViews
       {
         label: 'Product Votes',
         data: productVotes,
@@ -41,12 +41,12 @@ var myChart = new Chart(chartLocation, {
           'rgb(51, 0, 68)',
           'rgb(0, 0, 0)'
         ]
-      }
+      } //productVotes
     ]
   },
   options: {
     scales: {
-      xAxes: [{
+      yAxes: [{
         stacked: true
       }]
     }
