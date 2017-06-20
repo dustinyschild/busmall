@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>BusMall Product Survey</title>
+  <link src="styles.css" rel="stylesheet"/>
+</head>
+<body>
+  <header>
+    <img src="img\survey-logo-img.png"/> <!--bus mall logo goes here-->
+    <h1>Welcome to the BusMall survey!</h1>
+    <nav class="header-nav">
+      <ul>
+        <li><a href="index.html">Home<a/></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <aside>
+    <h3>Side Bar text</h3>
+    <!-- Add some cool auxilary stuff here: question count, progress bar, etc.-->
+  </aside>
+
+  <form>
+    <!--add the images via DOM with javascript-->
+    <label><img id="first-img" src="img/boots.jpg"><input type="radio" name="product-choice"/></label>
+    <label><img id="second-img" src="img/chair.jpg"><input type="radio" name="product-choice"/></label>
+    <label><img id="third-img" src="img/scissors.jpg"><input type="radio" name="product-choice"/></label>
+    <input type="button" value="Vote!"/>
+  </form>
+
+  <section>
+    <p>
+      Some survey info here
+    </p>
+  </section>
+
+  <footer>
+    <p>
+      Copywrite info/nav tabs
+    </p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
