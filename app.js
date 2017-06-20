@@ -1,6 +1,6 @@
 'use strict';
 var surveyLength = 3;
-var randomProduct = [0,1,2,];
+var randomProduct = [];
 var currentProducts = [];
 //create var to hold product objects
 var productList = [
@@ -8,7 +8,11 @@ var productList = [
   new AddProduct('Chair', 'img/chair.jpg'),
   new AddProduct('Scissors', 'img/scissors.jpg'),
   new AddProduct('Water Can', 'img/water-can.jpg'),
-  new AddProduct('Wine Glass', 'img/wine-glass.jpg')
+  new AddProduct('Wine Glass', 'img/wine-glass.jpg'),
+  new AddProduct('Fidget Spinner', 'img/fidget-spinner-blue.jpg'),
+  new AddProduct('Noodle Cooler', 'img/noodle-cooler.jpg'),
+  new AddProduct('Walking Bike', 'img/walking-bike.jpg'),
+  //new AddProduct()
 ];
 
 //create constructor function to build product objects
@@ -22,18 +26,24 @@ function AddProduct(
 ) {
   this.name = name;
   this.image = image;
+  //temporary placeholders:
+  this.views = Math.floor(Math.random() * 25);
+  this.votes = Math.floor(Math.random() * this.views);
+  console.log('views: ' + this.views);
+  console.log('votes: ' + this.votes);
 }
 
+//create a function to run the survey for x amount of cycles. make var surveyLength
 function runSurvey() {
-  for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < surveyLength; i++) {
     currentProducts[i] = Math.floor(Math.random() * productList.length);
   }
-  for (var i = 0; i < 2; i++) {
+  for (var i = 0; i < productList.length; i++) {
     var allProductsNew = false;
     while (!allProductsNew) {
 
       getThreeNewProducts();
-      checkAllProductsNew(allProductsNew);
+      //checkAllProductsNew(allProductsNew);
     }
     console.log('getting to here');
   }
@@ -69,5 +79,4 @@ function checkAllProductsNew(allProductsNew) {
 //create a function to use the DOM to display images
 //how should the DOM clear the previous cycle?
 
-//create a function to run the survey for x amount of cycles. make var surveyLength
 //create event listener for vote button click
