@@ -20,23 +20,26 @@
   </header>
 
   <aside>
-    <h3>Your Results:</h3>
-    <canvas id="bar-chart"></canvas>
     <!-- Add some cool auxilary stuff here: question count, progress bar, etc.-->
   </aside>
 
-  <form>
+<div class="survey">
     <!--add the images via DOM with javascript-->
     <label><img id="first-img" src="img/boots.jpg"><input type="radio" name="product-choice"/></label>
     <label><img id="second-img" src="img/chair.jpg"><input type="radio" name="product-choice"/></label>
     <label><img id="third-img" src="img/scissors.jpg"><input type="radio" name="product-choice"/></label>
     <input type="button" value="Vote!"/>
-  </form>
+  </div>
 
   <section>
     <p>
       Some survey info here
     </p>
+  </section>
+
+  <section class="results">
+    <h3>Your Results:</h3>
+    <canvas id="bar-chart"></canvas>
   </section>
 
   <footer>

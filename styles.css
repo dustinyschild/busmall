@@ -1,18 +1,51 @@
 header {
-  display:inline;
+  height: 100px;
+  background-color: orange;
 }
 
+h1 {
+  display: inline;
+
+}
+
+nav {
+  border: dotted blue;
+  float: right;
+
+}
  .header-nav li {
- display: inline;
+   display: inline;
+   padding: 5px;
 }
 
 aside {
   float: left;
-  height: 800px;
+  height: 500px;
   padding: 50px;
   border: black solid 3px;
+  width: 20%;
+  display: inline;
 }
 
-form {
+.push {
+  height: 50px;
+  clear: both;
+}
 
+.results {
+  width: 100%
+}
+
+.survey {
+  float: right;
+  width: 60%;
+}
+
+section {
+  width: 60%;
+  float: right;
+}
+
+footer {
+  display: block;
 }

@@ -1,3 +1,4 @@
+'use strict';
 var productNames = productList.map(function(productList){
   return productList.name;
 });
@@ -11,7 +12,7 @@ var productVotes = productList.map(function(productList){
 var chartLocation = document.getElementById('bar-chart').getContext('2d');
 console.log(chartLocation);
 var myChart = new Chart(chartLocation, {
-  type: 'horizontalBar',
+  type: 'bar',
   data: {
     labels: productNames,
     datasets: [
@@ -46,7 +47,7 @@ var myChart = new Chart(chartLocation, {
   },
   options: {
     scales: {
-      yAxes: [{
+      xAxes: [{
         stacked: true
       }]
     }
