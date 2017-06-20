@@ -1,4 +1,3 @@
-//move data out of objects to easily fit into the chart
 var productNames = productList.map(function(productList){
   return productList.name;
 });
@@ -9,11 +8,48 @@ var productVotes = productList.map(function(productList){
   return productList.votes;
 });
 
-console.log('Names: ' + productNames);
-console.log('Views: ' + productViews);
-console.log('Votes: ' + productVotes);
+var chartLocation = document.getElementById('bar-chart').getContext('2d');
 
-//target chart in DOM
-var myChart = document.getElementById('pie-chart');
-
-//
+var myChart = new Chart(chartLocation, {
+  type: 'bar',
+  data: {
+    labels: productNames,
+    datasets: [
+      {
+        label: 'Product Views',
+        data: productViews,
+        backgroundColor: ['rgba(209, 0, 0, 0.4)',
+          'rgba(255, 102, 34, 0.4)',
+          'rgba(255, 218, 33, 0.4)',
+          'rgba(51, 221, 0, 0.4)',
+          'rgba(17, 51, 204, 0.4)',
+          'rgba(34, 0, 102, 0.4)',
+          'rgba(51, 0, 68, 0.4)',
+          'rgba(0, 0, 0, 0.4)'
+        ]
+      },
+      {
+        label: 'Product Votes',
+        data: productVotes,
+        backgroundColor: [
+          'rgb(209, 0, 0)',
+          'rgb(255, 102, 34)',
+          'rgb(255, 218, 33)',
+          'rgb(51, 221, 0)',
+          'rgb(17, 51, 204)',
+          'rgb(34, 0, 102)',
+          'rgb(51, 0, 68)',
+          'rgb(0, 0, 0)'
+        ]
+      }
+    ]
+  },
+  options: {
+    scales: {
+      xAxes: [{
+        stacked: true
+      }]
+    }
+  }
+}
+);

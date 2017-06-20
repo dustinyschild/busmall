@@ -29,8 +29,6 @@ function AddProduct(
   //temporary placeholders:
   this.views = Math.floor(Math.random() * 25);
   this.votes = Math.floor(Math.random() * this.views);
-  console.log('views: ' + this.views);
-  console.log('votes: ' + this.votes);
 }
 
 //create a function to run the survey for x amount of cycles. make var surveyLength
