@@ -33,47 +33,25 @@ function AddProduct(
 
 //create a function to run the survey for x amount of cycles. make var surveyLength
 function runSurvey() {
-  for (var i = 0; i < surveyLength; i++) {
+  for (var i = 0; i < 1; i++) {
     currentProducts[i] = Math.floor(Math.random() * productList.length);
   }
   for (var i = 0; i < productList.length; i++) {
-    var allProductsNew = false;
-    while (!allProductsNew) {
-
-      getThreeNewProducts();
-      //checkAllProductsNew(allProductsNew);
+    var randomProduct = [];
+    for (var i = 0; i < 3; i++) {
+      randomProduct[i] = getNewProduct();
     }
-    console.log('getting to here');
+    
   }
 }
 
 //create a 'cooldown function' for the random numbers from the previous cycle
-function getThreeNewProducts() {
-  for (var j = 0; j < 3; j++) {
-    randomProduct[j] = Math.floor(Math.random() * productList.length);
-  }
+function getNewProduct(previousValues) {
+  return Math.floor(Math.random() * productList.length);
   console.log(randomProduct);
-  return randomProduct;
 }
 
-function checkAllProductsNew(allProductsNew) {
-  console.log('entering checker');
-  console.log(currentProducts + ':' + randomProduct);
-  for (var j = 0; j < 3; j++) {
-    for ( var l = 0; l < 3; l++) {
-      if (currentProducts[j] === randomProduct[l]) {
-        allProductsNew = false;
-        console.log('');
-        break;
-      } else {
-        allProductsNew = true;
-      }
-      console.log('allProductsNew: ' + allProductsNew);
-    }
-  }
-};
-
-//runSurvey();
+runSurvey();
 //create a function to use the DOM to display images
 //how should the DOM clear the previous cycle?
 
