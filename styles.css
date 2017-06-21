@@ -33,7 +33,7 @@ aside {
 }
 
 .results {
-  width: 100%
+  height: 50%;
 }
 
 .survey {
@@ -46,6 +46,13 @@ section {
   float: right;
 }
 
+.barchart {
+  display: block;
+}
+
+.piechart {
+  display: block;
+}
 footer {
   display: block;
 }

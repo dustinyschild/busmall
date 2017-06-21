@@ -11,8 +11,7 @@ var productList = [
   new AddProduct('Wine Glass', 'img/wine-glass.jpg'),
   new AddProduct('Fidget Spinner', 'img/fidget-spinner-blue.jpg'),
   new AddProduct('Noodle Cooler', 'img/noodle-cooler.jpg'),
-  new AddProduct('Walking Bike', 'img/walking-bike.jpg'),
-  //new AddProduct()
+  new AddProduct('Walking Bike', 'img/walking-bike.jpg')
 ];
 
 //create constructor function to build product objects
@@ -41,7 +40,6 @@ function runSurvey() {
     for (var i = 0; i < 3; i++) {
       randomProduct[i] = getNewProduct();
     }
-    
   }
 }
 
@@ -51,7 +49,7 @@ function getNewProduct(previousValues) {
   console.log(randomProduct);
 }
 
-runSurvey();
+//runSurvey();
 //create a function to use the DOM to display images
 //how should the DOM clear the previous cycle?
 

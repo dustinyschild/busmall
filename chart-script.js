@@ -8,6 +8,9 @@ var productViews = productList.map(function(productList){
 var productVotes = productList.map(function(productList){
   return productList.votes;
 });
+var percentageVoted = productList.map(function(productList){
+  return (productList.votes / productList.views);
+});
 
 var chartLocation = document.getElementById('bar-chart').getContext('2d');
 console.log(chartLocation);
@@ -54,3 +57,28 @@ var myChart = new Chart(chartLocation, {
   }
 }
 );
+
+var chartLocation2 = document.getElementById('pie-chart');
+
+var pieChart = new Chart(chartLocation, {
+  type: 'pie',
+  data: {
+    labels: productNames,
+    datasets: [
+      {
+        label: 'Percentage Voted When Viewed',
+        data: percentageVoted,
+        backgroundColor: [
+          'rgb(209, 0, 0)',
+          'rgb(255, 102, 34)',
+          'rgb(255, 218, 33)',
+          'rgb(51, 221, 0)',
+          'rgb(17, 51, 204)',
+          'rgb(34, 0, 102)',
+          'rgb(51, 0, 68)',
+          'rgb(0, 0, 0)'
+        ]
+      }
+    ]
+  }
+});
