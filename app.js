@@ -50,6 +50,16 @@ function getNewProduct(previousValues) {
 }
 
 //runSurvey();
+
+var voteButton = document.getElementById('form');
+
+voteButton.addEventListener('submit', onVote);
+
+function onVote(event) {
+  event.preventDefault();
+  console.log('submit clicked');
+  //save the vote count, the view count, and the cycle number to local storage
+}
 //create a function to use the DOM to display images
 //how should the DOM clear the previous cycle?
 
