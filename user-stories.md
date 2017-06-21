@@ -9,6 +9,7 @@
 -As a market researcher, I want to see what the users number of votes for each item, as well as the percentage ratio of the times voted for to the times viewed.
 -As a market researcher, I don't want users seeing the same image either twice in the same cycle, or in the next voting cycle.
 -As a market researcher, I would like the users to see the results only after the survey is completed.
+-As both a market researcher and a user, I want to see a chart depicting the number of votes and the number of views for each item.
 
 <h2>Developer stories:</h2>
 -As a developer, I should make good use of constructor functions in order to add or subtract products when needed.

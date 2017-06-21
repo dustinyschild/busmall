@@ -20,17 +20,16 @@
   </header>
 
   <aside>
-    <h3>Side Bar text</h3>
     <!-- Add some cool auxilary stuff here: question count, progress bar, etc.-->
   </aside>
 
-  <form>
+<div class="survey">
     <!--add the images via DOM with javascript-->
     <label><img id="first-img" src="img/boots.jpg"><input type="radio" name="product-choice"/></label>
     <label><img id="second-img" src="img/chair.jpg"><input type="radio" name="product-choice"/></label>
     <label><img id="third-img" src="img/scissors.jpg"><input type="radio" name="product-choice"/></label>
     <input type="button" value="Vote!"/>
-  </form>
+  </div>
 
   <section>
     <p>
@@ -38,11 +37,24 @@
     </p>
   </section>
 
+  <section class="results">
+    <h3>Your Results:</h3>
+    <div class="barchart">
+      <canvas id="bar-chart"></canvas>
+    </div>
+  </section>
+  <section>
+    <div class="piechart">
+      <canvas id="pie-chart"></canvas>
+    </div>
+  </section>
   <footer>
     <p>
       Copywrite info/nav tabs
     </p>
   </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
   <script src="app.js"></script>
+  <script src="chart-script.js"></script>
 </body>
 </html>
