@@ -58,6 +58,10 @@ voteButton.addEventListener('submit', onVote);
 function onVote(event) {
   event.preventDefault();
   console.log('submit clicked');
+  var productInput = event.target.querySelector('input[name="product-choice"]');
+  console.log(productInput);
+  //addToStorage();
+
   //save the vote count, the view count, and the cycle number to local storage
 }
 //create a function to use the DOM to display images
