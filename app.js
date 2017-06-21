@@ -1,7 +1,6 @@
 'use strict';
 var surveyLength = 3;
 var randomProduct = [];
-var currentProducts = [];
 //create var to hold product objects
 var productList = [
   new AddProduct('Boots', 'img/boots.jpg'),
@@ -14,6 +13,8 @@ var productList = [
   new AddProduct('Walking Bike', 'img/walking-bike.jpg')
 ];
 
+var currentProducts = [productList[0], productList[1], productList[2]];
+
 //create constructor function to build product objects
 //prototype any consistent values i.e. views, votes -> set = 0
 AddProduct.prototype.selectedCount = 0;
@@ -25,9 +26,6 @@ function AddProduct(
 ) {
   this.name = name;
   this.image = image;
-  //temporary placeholders:
-  this.views = Math.floor(Math.random() * 25);
-  this.votes = Math.floor(Math.random() * this.views);
 }
 
 //create a function to run the survey for x amount of cycles. make var surveyLength
@@ -49,6 +47,7 @@ function getNewProduct(previousValues) {
   console.log(randomProduct);
 }
 
+//display photos to the page
 //runSurvey();
 
 var voteButton = document.getElementById('form');
@@ -61,7 +60,12 @@ function onVote(event) {
   var productInput = [];
   for (var j = 0; j < 3; j++) {
     productInput[j] = event.target.querySelector('input[value="' + j + '"]');
+    currentProducts[j].viewedCount++;
     console.log(productInput[j].checked);
+    if (productInput[j].checked) {
+      currentProducts[j].selectedCount++;
+    }
+    console.log(currentProducts[j]);
   }
   //addToStorage();
 }
