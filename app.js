@@ -58,12 +58,18 @@ voteButton.addEventListener('submit', onVote);
 function onVote(event) {
   event.preventDefault();
   console.log('submit clicked');
-  var productInput = event.target.querySelector('input[name="product-choice"]');
-  console.log(productInput);
+  var productInput = [];
+  for (var j = 0; j < 3; j++) {
+    productInput[j] = event.target.querySelector('input[value="' + j + '"]');
+    console.log(productInput[j].checked);
+  }
   //addToStorage();
-
-  //save the vote count, the view count, and the cycle number to local storage
 }
+
+function addToStorage() {
+  window.localStorage.productList = JSON.stringify(productList);
+
+}  //save the vote count, the view count, and the cycle number to local storage
 //create a function to use the DOM to display images
 //how should the DOM clear the previous cycle?
 
