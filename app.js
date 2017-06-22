@@ -36,19 +36,19 @@ function runSurvey() {
   for (var i = 0; i < productList.length; i++) {
     var randomProduct = [];
     for (var i = 0; i < 3; i++) {
-      randomProduct[i] = getNewProduct();
+      randomProducts[i] = getNewProduct();
     }
+    console.log(randomProducts);
   }
 }
 
 //create a 'cooldown function' for the random numbers from the previous cycle
 function getNewProduct(previousValues) {
   return Math.floor(Math.random() * productList.length);
-  console.log(randomProduct);
 }
 
 //display photos to the page
-//runSurvey();
+runSurvey();
 
 var voteButton = document.getElementById('form');
 
@@ -67,13 +67,13 @@ function onVote(event) {
     }
     console.log(currentProducts[j]);
   }
-  //addToStorage();
+  addToStorage();
 }
 
 function addToStorage() {
   window.localStorage.productList = JSON.stringify(productList);
+}
 
-}  //save the vote count, the view count, and the cycle number to local storage
 //create a function to use the DOM to display images
 //how should the DOM clear the previous cycle?
 
