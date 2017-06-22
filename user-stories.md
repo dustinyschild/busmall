@@ -3,6 +3,7 @@
 <h2>End users:</h2>
 -As a user, I want to see 3 products with easily discernible images that I have to choose from.
 -As a user, I would like my selection to be handled by a vote button, in case I choose the wrong option or I change my mind.
+-As a user, I want my survey info(cycle number, views, and votes), so that I can return at some time in the future.
 
 <h2>Market researchers:</h2>
 -As a market researcher, I would like to be able to change the length of the survey at any time.
