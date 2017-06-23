@@ -30,13 +30,13 @@ function AddProduct(
 
 //create a function to run the survey for x amount of cycles. make var surveyLength
 function runSurvey() {
-  for (var i = 0; i < 1; i++) {
+  for (var i = 0; i < 3; i++) {
     currentProducts[i] = Math.floor(Math.random() * productList.length);
   }
   for (var i = 0; i < productList.length; i++) {
-    var randomProduct = [];
+    var randomProducts = [];
     for (var i = 0; i < 3; i++) {
-      randomProduct[i] = getNewProduct();
+      randomProducts[i] = getNewProduct();
     }
   }
 }
@@ -44,7 +44,6 @@ function runSurvey() {
 //create a 'cooldown function' for the random numbers from the previous cycle
 function getNewProduct(previousValues) {
   return Math.floor(Math.random() * productList.length);
-  console.log(randomProduct);
 }
 
 //display photos to the page
@@ -56,24 +55,32 @@ voteButton.addEventListener('submit', onVote);
 
 function onVote(event) {
   event.preventDefault();
-  console.log('submit clicked');
   var productInput = [];
   for (var j = 0; j < 3; j++) {
     productInput[j] = event.target.querySelector('input[value="' + j + '"]');
     currentProducts[j].viewedCount++;
-    console.log(productInput[j].checked);
+    //console.log(productInput[j].checked);
     if (productInput[j].checked) {
       currentProducts[j].selectedCount++;
     }
-    console.log(currentProducts[j]);
+    //console.log(currentProducts[j]);
   }
-  //addToStorage();
+  addToStorage();
+  retrieveLocalStorage();
 }
 
 function addToStorage() {
   window.localStorage.productList = JSON.stringify(productList);
+}
 
-}  //save the vote count, the view count, and the cycle number to local storage
+function retrieveLocalStorage() {
+  var productString = window.localStorage.productList;
+  if (!productString) {
+    return null;
+  }
+  var storedProductInfo = JSON.parse(productString);
+  console.log(storedProductInfo[0].name);
+}
 //create a function to use the DOM to display images
 //how should the DOM clear the previous cycle?
 
