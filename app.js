@@ -47,6 +47,17 @@ function getNewProduct(previousValues) {
 }
 
 //display photos to the page
+var imageContainer = document.getElementById('form');
+var label = document.createElement('label');
+var image = document.createElement('img');
+var input = document.createElement('input');
+input.type = 'radio';
+input.name = 'radiobutton';
+input.id = currentProducts[0].name;
+label.appendChild(image);
+label.appendChild(input);
+imageContainer.insertBefore(label, imageContainer.firstChild);
+image.src = currentProducts[0].image;
 //runSurvey();
 
 var voteButton = document.getElementById('form');

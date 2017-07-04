@@ -21,7 +21,7 @@ var myChart = new Chart(chartLocation, {
     datasets: [
       {
         label: 'Product Views',
-        data: productViews,
+        data: viewedCount,
         backgroundColor: ['rgba(209, 0, 0, 0.4)',
           'rgba(255, 102, 34, 0.4)',
           'rgba(255, 218, 33, 0.4)',
@@ -34,7 +34,7 @@ var myChart = new Chart(chartLocation, {
       }, //productViews
       {
         label: 'Product Votes',
-        data: productVotes,
+        data: selectedCount,
         backgroundColor: [
           'rgb(209, 0, 0)',
           'rgb(255, 102, 34)',
@@ -60,7 +60,7 @@ var myChart = new Chart(chartLocation, {
 
 var chartLocation2 = document.getElementById('pie-chart');
 
-var pieChart = new Chart(chartLocation, {
+var pieChart = new Chart(chartLocation2, {
   type: 'pie',
   data: {
     labels: productNames,
