@@ -10,7 +10,9 @@ var productList = [
   new AddProduct('Wine Glass', 'img/wine-glass.jpg'),
   new AddProduct('Fidget Spinner', 'img/fidget-spinner-blue.jpg'),
   new AddProduct('Noodle Cooler', 'img/noodle-cooler.jpg'),
-  new AddProduct('Walking Bike', 'img/walking-bike.jpg')
+  new AddProduct('Walking Bike', 'img/walking-bike.jpg'),
+  new AddProduct('Butter Stick', 'img/butter-stick.jpg'),
+  new AddProduct('Rope Handle Silverware', 'img/rope-handle-silverware.jpg')
 ];
 
 var currentProducts = [productList[0], productList[1], productList[2]];
@@ -29,17 +31,20 @@ function AddProduct(
 }
 
 //create a function to run the survey for x amount of cycles. make var surveyLength
-function runSurvey() {
-  for (var i = 0; i < 3; i++) {
-    currentProducts[i] = Math.floor(Math.random() * productList.length);
-  }
+for (var i = 0; i < 3; i++) {
+  var productNumber = Math.floor(Math.random() * productList.length);
+  currentProducts[i] = productList[productNumber];
+  console.log();
+  console.log(currentProducts);
+}
+/*
   for (var i = 0; i < productList.length; i++) {
     var randomProducts = [];
     for (var i = 0; i < 3; i++) {
       randomProducts[i] = getNewProduct();
     }
   }
-}
+  */
 
 //create a 'cooldown function' for the random numbers from the previous cycle
 function getNewProduct(previousValues) {
@@ -55,7 +60,6 @@ for (var i = 2; i > -1; i--){
   input.type = 'radio';
   input.name = 'radiobutton';
   input.id = currentProducts[i].name;
-  input.value = i;
   label.appendChild(image);
   label.appendChild(input);
   imageContainer.insertBefore(label, imageContainer.firstChild);
@@ -71,12 +75,11 @@ function onVote(event) {
   event.preventDefault();
   var productInput = [];
   for (var j = 0; j < 3; j++) {
-    productInput[j] = event.target.querySelector('input[value="' + j + '"]');
+    productInput[j] = event.target.querySelector('input[id="' + currentProducts[j].name + '"]');
     currentProducts[j].viewedCount++;
     if (productInput[j].checked) {
       currentProducts[j].selectedCount++;
       console.log(currentProducts[j]);
-
     }
   }
   addToStorage();
