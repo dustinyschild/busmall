@@ -48,16 +48,19 @@ function getNewProduct(previousValues) {
 
 //display photos to the page
 var imageContainer = document.getElementById('form');
-var label = document.createElement('label');
-var image = document.createElement('img');
-var input = document.createElement('input');
-input.type = 'radio';
-input.name = 'radiobutton';
-input.id = currentProducts[0].name;
-label.appendChild(image);
-label.appendChild(input);
-imageContainer.insertBefore(label, imageContainer.firstChild);
-image.src = currentProducts[0].image;
+for (var i = 2; i > -1; i--){
+  var label = document.createElement('label');
+  var image = document.createElement('img');
+  var input = document.createElement('input');
+  input.type = 'radio';
+  input.name = 'radiobutton';
+  input.id = currentProducts[i].name;
+  input.value = i;
+  label.appendChild(image);
+  label.appendChild(input);
+  imageContainer.insertBefore(label, imageContainer.firstChild);
+  image.src = currentProducts[i].image;
+}
 //runSurvey();
 
 var voteButton = document.getElementById('form');
@@ -70,11 +73,11 @@ function onVote(event) {
   for (var j = 0; j < 3; j++) {
     productInput[j] = event.target.querySelector('input[value="' + j + '"]');
     currentProducts[j].viewedCount++;
-    //console.log(productInput[j].checked);
     if (productInput[j].checked) {
       currentProducts[j].selectedCount++;
+      console.log(currentProducts[j]);
+
     }
-    //console.log(currentProducts[j]);
   }
   addToStorage();
   productList = retrieveLocalStorage();
