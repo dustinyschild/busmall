@@ -66,7 +66,7 @@ function onVote(event) {
     //console.log(currentProducts[j]);
   }
   addToStorage();
-  retrieveLocalStorage();
+  productList = retrieveLocalStorage();
 }
 
 function addToStorage() {
@@ -78,8 +78,7 @@ function retrieveLocalStorage() {
   if (!productString) {
     return null;
   }
-  var storedProductInfo = JSON.parse(productString);
-  console.log(storedProductInfo[0].name);
+  return JSON.parse(productString);
 }
 //create a function to use the DOM to display images
 //how should the DOM clear the previous cycle?
