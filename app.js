@@ -15,8 +15,8 @@ var productList = [
   new AddProduct('Rope Handle Silverware', 'img/rope-handle-silverware.jpg')
 ];
 
-var currentProducts = [productList[0], productList[1], productList[2]];
-
+var currentProducts = [];
+var previousProducts = [];
 //create constructor function to build product objects
 //prototype any consistent values i.e. views, votes -> set = 0
 AddProduct.prototype.selectedCount = 0;
@@ -30,26 +30,25 @@ function AddProduct(
   this.image = image;
 }
 
-//create a function to run the survey for x amount of cycles. make var surveyLength
-for (var i = 0; i < 3; i++) {
-  var productNumber = Math.floor(Math.random() * productList.length);
-  currentProducts[i] = productList[productNumber];
-  console.log();
-  console.log(currentProducts);
-}
-/*
-  for (var i = 0; i < productList.length; i++) {
-    var randomProducts = [];
-    for (var i = 0; i < 3; i++) {
-      randomProducts[i] = getNewProduct();
-    }
+getRandomProducts();
+function getRandomProducts(){
+  var availableProducts = productList;
+  console.log(availableProducts);
+  for (var i = 0; i < previousProducts.length; i++){
+    console.log(availableProducts.indexOf(previousProducts[i]) + ' was removed');
+    availableProducts.splice(availableProducts.indexOf(previousProducts[i]), 1);
   }
-  */
-
-//create a 'cooldown function' for the random numbers from the previous cycle
-function getNewProduct(previousValues) {
-  return Math.floor(Math.random() * productList.length);
+  for (var i = 0; i < 3; i++) {
+    var productNumber = Math.floor(Math.random() * productList.length);
+    currentProducts[i] = availableProducts[productNumber];
+    availableProducts.splice(productNumber, 1);
+    console.log(currentProducts);
+    console.log(availableProducts.length);
+  }
+  previousProducts = currentProducts;
+  return currentProducts;
 }
+//create a 'cooldown function' for the random numbers from the previous cycle
 
 //display photos to the page
 var imageContainer = document.getElementById('form');
@@ -76,14 +75,16 @@ function onVote(event) {
   var productInput = [];
   for (var j = 0; j < 3; j++) {
     productInput[j] = event.target.querySelector('input[id="' + currentProducts[j].name + '"]');
+    console.log(productInput);
     currentProducts[j].viewedCount++;
     if (productInput[j].checked) {
       currentProducts[j].selectedCount++;
       console.log(currentProducts[j]);
     }
   }
-  addToStorage();
-  productList = retrieveLocalStorage();
+  //addToStorage();
+  //productList = retrieveLocalStorage();
+  getRandomProducts();
 }
 
 function addToStorage() {
