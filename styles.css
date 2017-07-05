@@ -1,18 +1,27 @@
 header {
-  height: 100px;
+  height: 20%;
   background-color: orange;
+}
+
+header img {
+  height: inherit;
 }
 
 h1 {
   display: inline;
-
 }
 
-nav {
-  border: dotted blue;
+.header-nav {
+  background-color: lightgreen;
   float: right;
-
 }
+
+.header-nav li a {
+  text-decoration: black;
+  color: black;
+  font-weight: bold;
+}
+
  .header-nav li {
    display: inline;
    padding: 5px;
@@ -20,7 +29,7 @@ nav {
 
 aside {
   float: left;
-  height: 500px;
+  height: 80%;
   padding: 50px;
   border: black solid 3px;
   width: 20%;
@@ -41,6 +50,30 @@ aside {
   width: 60%;
 }
 
+.survey label {
+  display: inline;
+  height: inherit;
+}
+
+.survey input {
+  display: none;
+}
+
+.survey label:focus {
+  border: black solid 2px;
+}
+
+
+#submitbutton {
+  display: block;
+  align-self: center;
+}
+
+.survey img {
+  width: 30%;
+  margin: 1.5%;
+}
+
 section {
   width: 60%;
   float: right;
@@ -54,5 +87,8 @@ section {
   display: block;
 }
 footer {
+  position: absolute;
+  top: inherit;
+  height: 20%;
   display: block;
 }
