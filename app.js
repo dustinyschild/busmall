@@ -17,6 +17,7 @@ var productList = [
 
 var currentProducts = [];
 var previousProducts = [];
+var availableProducts = [];
 //create constructor function to build product objects
 //prototype any consistent values i.e. views, votes -> set = 0
 AddProduct.prototype.selectedCount = 0;
@@ -32,7 +33,8 @@ function AddProduct(
 
 getRandomProducts();
 function getRandomProducts(){
-  var availableProducts = productList;
+  availableProducts = productList;
+  availableProducts.push(previousProducts);
   console.log(availableProducts);
   for (var i = 0; i < previousProducts.length; i++){
     console.log(availableProducts.indexOf(previousProducts[i]) + ' was removed');
@@ -82,8 +84,8 @@ function onVote(event) {
       console.log(currentProducts[j]);
     }
   }
-  //addToStorage();
-  //productList = retrieveLocalStorage();
+  addToStorage();
+  productList = retrieveLocalStorage();
   getRandomProducts();
 }
 
