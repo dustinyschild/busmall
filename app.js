@@ -1,5 +1,5 @@
 'use strict';
-var surveyLength = 3;
+var surveyLength = 25;
 var randomProduct = [];
 //create var to hold product objects
 var productList = [
@@ -10,11 +10,14 @@ var productList = [
   new AddProduct('Wine Glass', 'img/wine-glass.jpg'),
   new AddProduct('Fidget Spinner', 'img/fidget-spinner-blue.jpg'),
   new AddProduct('Noodle Cooler', 'img/noodle-cooler.jpg'),
-  new AddProduct('Walking Bike', 'img/walking-bike.jpg')
+  new AddProduct('Walking Bike', 'img/walking-bike.jpg'),
+  new AddProduct('Butter Stick', 'img/butter-stick.jpg'),
+  new AddProduct('Rope Handle Silverware', 'img/rope-handle-silverware.jpg')
 ];
 
-var currentProducts = [productList[0], productList[1], productList[2]];
-
+var currentProducts = [];
+var previousProducts = [];
+var availableProducts = [];
 //create constructor function to build product objects
 //prototype any consistent values i.e. views, votes -> set = 0
 AddProduct.prototype.selectedCount = 0;
@@ -26,27 +29,45 @@ function AddProduct(
 ) {
   this.name = name;
   this.image = image;
+  this.viewedCount = Math.floor(Math.random() * 25);
+  this.selectedCount = Math.floor(Math.random() * this.viewedCount);
 }
 
-//create a function to run the survey for x amount of cycles. make var surveyLength
-function runSurvey() {
+getRandomProducts();
+function getRandomProducts(){
+  availableProducts = productList;
+  availableProducts.push(previousProducts);
+  console.log(availableProducts);
+  for (var i = 0; i < previousProducts.length; i++){
+    console.log(availableProducts.indexOf(previousProducts[i]) + ' was removed');
+    availableProducts.splice(availableProducts.indexOf(previousProducts[i]), 1);
+  }
   for (var i = 0; i < 3; i++) {
-    currentProducts[i] = Math.floor(Math.random() * productList.length);
+    var productNumber = Math.floor(Math.random() * productList.length);
+    currentProducts[i] = availableProducts[productNumber];
+    availableProducts.splice(productNumber, 1);
+    console.log(currentProducts);
+    console.log(availableProducts.length);
   }
-  for (var i = 0; i < productList.length; i++) {
-    var randomProducts = [];
-    for (var i = 0; i < 3; i++) {
-      randomProducts[i] = getNewProduct();
-    }
-  }
+  previousProducts = currentProducts;
+  return currentProducts;
 }
-
 //create a 'cooldown function' for the random numbers from the previous cycle
-function getNewProduct(previousValues) {
-  return Math.floor(Math.random() * productList.length);
-}
 
 //display photos to the page
+var imageContainer = document.getElementById('form');
+for (var i = 2; i > -1; i--){
+  var label = document.createElement('label');
+  var image = document.createElement('img');
+  var input = document.createElement('input');
+  input.type = 'radio';
+  input.name = 'radiobutton';
+  input.id = currentProducts[i].name;
+  label.appendChild(image);
+  label.appendChild(input);
+  imageContainer.insertBefore(label, imageContainer.firstChild);
+  image.src = currentProducts[i].image;
+}
 //runSurvey();
 
 var voteButton = document.getElementById('form');
@@ -57,16 +78,17 @@ function onVote(event) {
   event.preventDefault();
   var productInput = [];
   for (var j = 0; j < 3; j++) {
-    productInput[j] = event.target.querySelector('input[value="' + j + '"]');
+    productInput[j] = event.target.querySelector('input[id="' + currentProducts[j].name + '"]');
+    console.log(productInput);
     currentProducts[j].viewedCount++;
-    //console.log(productInput[j].checked);
     if (productInput[j].checked) {
       currentProducts[j].selectedCount++;
+      console.log(currentProducts[j]);
     }
-    //console.log(currentProducts[j]);
   }
   addToStorage();
-  retrieveLocalStorage();
+  productList = retrieveLocalStorage();
+  getRandomProducts();
 }
 
 function addToStorage() {
@@ -78,8 +100,7 @@ function retrieveLocalStorage() {
   if (!productString) {
     return null;
   }
-  var storedProductInfo = JSON.parse(productString);
-  console.log(storedProductInfo[0].name);
+  return JSON.parse(productString);
 }
 //create a function to use the DOM to display images
 //how should the DOM clear the previous cycle?

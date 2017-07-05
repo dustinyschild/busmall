@@ -3,13 +3,13 @@ var productNames = productList.map(function(productList){
   return productList.name;
 });
 var productViews = productList.map(function(productList){
-  return productList.views;
+  return productList.viewedCount;
 });
 var productVotes = productList.map(function(productList){
-  return productList.votes;
+  return productList.selectedCount;
 });
 var percentageVoted = productList.map(function(productList){
-  return (productList.votes / productList.views);
+  return (productList.selectedCount / productList.viewedCount);
 });
 
 var chartLocation = document.getElementById('bar-chart').getContext('2d');
@@ -60,7 +60,7 @@ var myChart = new Chart(chartLocation, {
 
 var chartLocation2 = document.getElementById('pie-chart');
 
-var pieChart = new Chart(chartLocation, {
+var pieChart = new Chart(chartLocation2, {
   type: 'pie',
   data: {
     labels: productNames,
