@@ -1,5 +1,5 @@
 'use strict';
-var surveyLength = 3;
+var surveyLength = 25;
 var randomProduct = [];
 //create var to hold product objects
 var productList = [
@@ -29,6 +29,8 @@ function AddProduct(
 ) {
   this.name = name;
   this.image = image;
+  this.viewedCount = Math.floor(Math.random() * 25);
+  this.selectedCount = Math.floor(Math.random() * this.viewedCount);
 }
 
 getRandomProducts();

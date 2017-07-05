@@ -3,13 +3,13 @@ var productNames = productList.map(function(productList){
   return productList.name;
 });
 var productViews = productList.map(function(productList){
-  return productList.views;
+  return productList.viewedCount;
 });
 var productVotes = productList.map(function(productList){
-  return productList.votes;
+  return productList.selectedCount;
 });
 var percentageVoted = productList.map(function(productList){
-  return (productList.votes / productList.views);
+  return (productList.selectedCount / productList.viewedCount);
 });
 
 var chartLocation = document.getElementById('bar-chart').getContext('2d');
@@ -21,7 +21,7 @@ var myChart = new Chart(chartLocation, {
     datasets: [
       {
         label: 'Product Views',
-        data: viewedCount,
+        data: productViews,
         backgroundColor: ['rgba(209, 0, 0, 0.4)',
           'rgba(255, 102, 34, 0.4)',
           'rgba(255, 218, 33, 0.4)',
@@ -34,7 +34,7 @@ var myChart = new Chart(chartLocation, {
       }, //productViews
       {
         label: 'Product Votes',
-        data: selectedCount,
+        data: productVotes,
         backgroundColor: [
           'rgb(209, 0, 0)',
           'rgb(255, 102, 34)',
